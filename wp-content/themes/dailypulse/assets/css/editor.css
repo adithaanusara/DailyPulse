@@ -1,0 +1,177 @@
+/*
+ * DailyPulse — block editor styles.
+ *
+ * WordPress scopes this file to the editing canvas, so writing a story looks
+ * like reading one: same fonts, same measure, same quote and link styles.
+ */
+
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/inter-latin-wght-italic.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Fraunces";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/fraunces-latin-opsz-normal.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Fraunces";
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/fraunces-latin-opsz-italic.woff2") format("woff2");
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: "Noto Sans Sinhala";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/noto-sans-sinhala-sinhala-wght-normal.woff2") format("woff2");
+	unicode-range: U+0964-0965, U+0D81-0DF4, U+1CF2, U+200C-200D, U+25CC, U+111E1-111F4;
+}
+
+@font-face {
+	font-family: "Noto Serif Sinhala";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/noto-serif-sinhala-sinhala-wght-normal.woff2") format("woff2");
+	unicode-range: U+0964-0965, U+0D81-0DF4, U+1CF2, U+200C-200D, U+25CC, U+111E1-111F4;
+}
+
+@font-face {
+	font-family: "Noto Sans Tamil";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/noto-sans-tamil-tamil-wght-normal.woff2") format("woff2");
+	unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+
+@font-face {
+	font-family: "Noto Serif Tamil";
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("../fonts/noto-serif-tamil-tamil-wght-normal.woff2") format("woff2");
+	unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
+}
+
+body {
+	font-family: "Inter", "Noto Sans Sinhala", "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	font-size: 1.15rem;
+	line-height: 1.72;
+	color: #15130f;
+	background: #faf9f6;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.editor-post-title__input,
+.wp-block-post-title {
+	font-family: "Fraunces", "Noto Serif Sinhala", "Noto Serif Tamil", Georgia, "Times New Roman", serif;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: -0.012em;
+}
+
+.editor-post-title__input,
+.wp-block-post-title {
+	font-size: clamp(2.2rem, 1.5rem + 3.6vw, 4.1rem);
+	line-height: 1.06;
+	letter-spacing: -0.025em;
+}
+
+h2 {
+	font-size: 1.6em;
+	letter-spacing: -0.025em;
+}
+
+h3 {
+	font-size: 1.28em;
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-color: #e5352b;
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 3px;
+}
+
+li::marker {
+	font-weight: 600;
+	color: #e5352b;
+}
+
+.wp-block-quote {
+	margin-inline: 0;
+	padding: 0.15em 0 0.15em 1.25em;
+	font-family: "Fraunces", "Noto Serif Sinhala", "Noto Serif Tamil", Georgia, serif;
+	font-size: 1.22em;
+	font-style: italic;
+	font-weight: 480;
+	line-height: 1.42;
+	border-left: 3px solid #e5352b;
+}
+
+.wp-block-quote cite,
+.wp-block-pullquote cite {
+	display: block;
+	font-family: "Inter", system-ui, sans-serif;
+	font-size: 0.82rem;
+	font-style: normal;
+	font-weight: 600;
+	color: #6f6b63;
+}
+
+.wp-block-pullquote {
+	padding: 1.2em 0;
+	font-family: "Fraunces", Georgia, serif;
+	font-size: 1.5em;
+	font-weight: 520;
+	line-height: 1.28;
+	border-block: 1px solid #e3e0d8;
+}
+
+.wp-block-image img {
+	border-radius: 14px;
+}
+
+figcaption,
+.wp-element-caption {
+	font-size: 0.82rem;
+	color: #6f6b63;
+}
+
+.wp-block-button__link {
+	padding: 0.85em 1.5em;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: #faf9f6;
+	background: #15130f;
+	border-radius: 99px;
+}

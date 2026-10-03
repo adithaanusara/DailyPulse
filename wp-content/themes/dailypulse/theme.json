@@ -1,0 +1,55 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "720px",
+			"wideSize": "1120px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"palette": [
+				{ "slug": "ink", "name": "Ink", "color": "#15130f" },
+				{ "slug": "paper", "name": "Paper", "color": "#faf9f6" },
+				{ "slug": "mist", "name": "Mist", "color": "#f1efea" },
+				{ "slug": "stone", "name": "Stone", "color": "#6f6b63" },
+				{ "slug": "pulse", "name": "Pulse red", "color": "#e5352b" },
+				{ "slug": "teal", "name": "Teal", "color": "#0d9488" },
+				{ "slug": "blue", "name": "Blue", "color": "#2563eb" },
+				{ "slug": "magenta", "name": "Magenta", "color": "#c026d3" },
+				{ "slug": "green", "name": "Green", "color": "#4d9f0c" }
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"defaultFontSizes": false,
+			"customFontSize": true,
+			"dropCap": true,
+			"fontFamilies": [
+				{
+					"slug": "sans",
+					"name": "Inter",
+					"fontFamily": "Inter, \"Inter Fallback\", \"Noto Sans Sinhala\", \"Noto Sans Tamil\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif"
+				},
+				{
+					"slug": "display",
+					"name": "Fraunces",
+					"fontFamily": "Fraunces, \"Fraunces Fallback\", \"Noto Serif Sinhala\", \"Noto Serif Tamil\", Georgia, \"Times New Roman\", serif"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "name": "Small", "size": "0.875rem", "fluid": false },
+				{ "slug": "medium", "name": "Medium", "size": "1.125rem", "fluid": false },
+				{ "slug": "large", "name": "Large", "size": "1.4rem", "fluid": { "min": "1.25rem", "max": "1.4rem" } },
+				{ "slug": "x-large", "name": "Extra large", "size": "2rem", "fluid": { "min": "1.6rem", "max": "2rem" } },
+				{ "slug": "xx-large", "name": "Huge", "size": "3rem", "fluid": { "min": "2.1rem", "max": "3rem" } }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "%", "vw" ]
+		}
+	}
+}

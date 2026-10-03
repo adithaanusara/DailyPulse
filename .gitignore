@@ -1,0 +1,20 @@
+# Local environment
+.env
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Logs and dependencies
+*.log
+node_modules/
+vendor/
+
+# If this repository is cloned inside a WordPress install, keep core and content out of it
+/wp-admin/
+/wp-includes/
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-config.php
