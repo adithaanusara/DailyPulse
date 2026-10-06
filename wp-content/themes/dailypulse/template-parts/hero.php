@@ -1,9 +1,7 @@
 <?php
 /**
- * Homepage hero: a slider of the top stories with a headline rail beside it.
- *
- * Hovering or focusing a headline in the rail previews its slide; clicking opens
- * the story. On small screens the rail is hidden and the slider is swiped.
+ * Homepage hero: a slider of the top stories with two fixed story tiles beside
+ * it (stacked under it on small screens). The slider can be swiped.
  *
  * @package DailyPulse
  */
@@ -16,12 +14,15 @@ if ( ! $dailypulse_posts ) {
 
 dailypulse_shown( wp_list_pluck( $dailypulse_posts, 'ID' ) );
 
+// The last two stories sit beside the slider as fixed tiles; the rest rotate in it.
+$dailypulse_side = count( $dailypulse_posts ) >= 3 ? array_splice( $dailypulse_posts, -2 ) : array();
+
 $dailypulse_total    = count( $dailypulse_posts );
 $dailypulse_many     = $dailypulse_total > 1;
 $dailypulse_interval = (int) dailypulse_option( 'hero_interval' );
 ?>
 <section
-	class="container hero<?php echo $dailypulse_many ? '' : ' hero--single'; ?>"
+	class="container hero<?php echo $dailypulse_side ? '' : ' hero--single'; ?>"
 	data-hero
 	data-autoplay="<?php echo dailypulse_option( 'hero_autoplay' ) ? '1' : '0'; ?>"
 	style="--hero-interval:<?php echo esc_attr( (string) $dailypulse_interval ); ?>s"
@@ -47,7 +48,7 @@ $dailypulse_interval = (int) dailypulse_option( 'hero_interval' );
 					dailypulse_image(
 						array(
 							'size'  => 'large',
-							'sizes' => '(min-width: 1024px) min(860px, 64vw), 100vw',
+							'sizes' => '(min-width: 1024px) 800px, 100vw',
 							// Only the first slide is visible at load; it is the page's largest paint.
 							'eager' => 0 === $dailypulse_index,
 						)
@@ -96,26 +97,24 @@ $dailypulse_interval = (int) dailypulse_option( 'hero_interval' );
 		<?php endif; ?>
 	</div>
 
-	<?php if ( $dailypulse_many ) : ?>
-		<ol class="hero__rail">
+	<?php if ( $dailypulse_side ) : ?>
+		<div class="hero__side">
 			<?php
-			foreach ( $dailypulse_posts as $dailypulse_index => $post ) : // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- restored below.
+			foreach ( $dailypulse_side as $dailypulse_index => $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- restored below.
 				setup_postdata( $post );
-				?>
-				<li
-					class="hero__rail-item<?php echo 0 === $dailypulse_index ? ' is-active' : ''; ?>"
-					data-hero-rail="<?php echo esc_attr( (string) $dailypulse_index ); ?>"
-					<?php echo dailypulse_cat_style( dailypulse_primary_category(), '--i:' . $dailypulse_index ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helper. ?>
-				>
-					<span class="hero__rail-num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $dailypulse_index + 1 ) ); ?></span>
-					<div class="hero__rail-body">
-						<?php dailypulse_kicker( 0, false ); ?>
-						<a class="hero__rail-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-						<?php echo dailypulse_time(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helper. ?>
-					</div>
-				</li>
-			<?php endforeach; ?>
-		</ol>
+				dailypulse_card(
+					array(
+						'variant' => 'overlay',
+						'tag'     => 'h2',
+						'size'    => 'large',
+						'sizes'   => '(min-width: 1024px) 420px, 100vw',
+						'index'   => $dailypulse_index + 1,
+						'reveal'  => false,
+					)
+				);
+			}
+			?>
+		</div>
 	<?php endif; ?>
 </section>
 <?php

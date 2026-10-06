@@ -31,25 +31,25 @@ function dailypulse_core_default_categories() {
 			'name'   => __( 'Local News', 'dailypulse-core' ),
 			'color'  => '#0d9488',
 			'order'  => 10,
-			'layout' => 'lead',
+			'layout' => 'auto',
 		),
 		'foreign-news' => array(
 			'name'   => __( 'Foreign News', 'dailypulse-core' ),
 			'color'  => '#2563eb',
 			'order'  => 20,
-			'layout' => 'grid',
+			'layout' => 'auto',
 		),
 		'articles'     => array(
 			'name'   => __( 'Articles', 'dailypulse-core' ),
 			'color'  => '#c026d3',
 			'order'  => 30,
-			'layout' => 'magazine',
+			'layout' => 'auto',
 		),
 		'sports'       => array(
 			'name'   => __( 'Sports', 'dailypulse-core' ),
 			'color'  => '#4d9f0c',
 			'order'  => 40,
-			'layout' => 'band',
+			'layout' => 'auto',
 		),
 	);
 }

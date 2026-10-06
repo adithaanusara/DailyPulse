@@ -1,11 +1,13 @@
 <?php
 /**
- * Site header: brand, section navigation, search and the light/dark toggle,
- * followed by the breaking-news ticker.
+ * Site header, newspaper style: a top bar with the date, the breaking-news
+ * ticker and social links; the centred masthead; and a dark, sticky menu bar
+ * with search and the light/dark toggle.
  *
  * @package DailyPulse
  */
 
+$dailypulse_social = dailypulse_social_links();
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -20,16 +22,45 @@
 
 <a class="skip-link" href="#main"><?php esc_html_e( 'Skip to content', 'dailypulse' ); ?></a>
 
-<header class="site-header" data-header>
-	<div class="container site-header__inner">
+<div class="topbar">
+	<div class="container topbar__inner">
+		<?php /* translators: date format for the top bar, see https://www.php.net/manual/datetime.format.php */ ?>
+		<time class="topbar__date" datetime="<?php echo esc_attr( wp_date( 'Y-m-d' ) ); ?>"><?php echo dailypulse_icon( 'clock' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><?php echo esc_html( wp_date( _x( 'l, F j, Y', 'top bar date format', 'dailypulse' ) ) ); ?></time>
+
+		<?php get_template_part( 'template-parts/ticker' ); ?>
+
+		<?php if ( $dailypulse_social ) : ?>
+			<ul class="topbar__social">
+				<?php foreach ( $dailypulse_social as $dailypulse_link ) : ?>
+					<li>
+						<a href="<?php echo esc_url( $dailypulse_link['url'] ); ?>" target="_blank" rel="noopener noreferrer me" aria-label="<?php echo esc_attr( $dailypulse_link['label'] ); ?>">
+							<?php echo dailypulse_icon( $dailypulse_link['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+	</div>
+</div>
+
+<div class="masthead">
+	<div class="container">
 		<?php // The site name is the page heading on the homepage only; elsewhere the story or archive title is. ?>
 		<?php if ( is_front_page() && ! is_paged() ) : ?>
-			<h1 class="site-header__brand"><?php dailypulse_brand(); ?></h1>
+			<h1 class="masthead__brand"><?php dailypulse_brand(); ?></h1>
 		<?php else : ?>
-			<div class="site-header__brand"><?php dailypulse_brand(); ?></div>
+			<div class="masthead__brand"><?php dailypulse_brand(); ?></div>
 		<?php endif; ?>
+		<?php if ( get_bloginfo( 'description' ) && ! has_custom_logo() ) : ?>
+			<p class="masthead__tagline"><?php bloginfo( 'description' ); ?></p>
+		<?php endif; ?>
+	</div>
+</div>
 
+<header class="site-header" data-header>
+	<div class="container site-header__inner">
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Sections', 'dailypulse' ); ?>">
+			<a class="site-nav__home<?php echo is_front_page() ? ' is-current' : ''; ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>"<?php echo is_front_page() ? ' aria-current="page"' : ''; ?>><?php esc_html_e( 'Home', 'dailypulse' ); ?></a>
 			<?php
 			wp_nav_menu(
 				array(
@@ -53,7 +84,5 @@
 		</div>
 	</div>
 </header>
-
-<?php get_template_part( 'template-parts/ticker' ); ?>
 
 <main id="main" class="site-main">

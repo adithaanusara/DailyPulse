@@ -24,7 +24,7 @@ if ( ! $dailypulse_query->have_posts() ) {
 }
 ?>
 <section
-	class="container section feed"
+	class="box feed"
 	id="latest"
 	data-feed
 	data-per-page="<?php echo esc_attr( (string) $dailypulse_per_page ); ?>"
@@ -53,7 +53,7 @@ if ( ! $dailypulse_query->have_posts() ) {
 		<?php endif; ?>
 	</header>
 
-	<div class="grid grid--3 feed__grid" data-feed-grid>
+	<div class="grid grid--2 feed__grid" data-feed-grid>
 		<?php
 		$dailypulse_index = 0;
 		while ( $dailypulse_query->have_posts() ) {
@@ -61,7 +61,8 @@ if ( ! $dailypulse_query->have_posts() ) {
 			dailypulse_card(
 				array(
 					'excerpt' => true,
-					'index'   => $dailypulse_index % 3,
+					'index'   => $dailypulse_index % 2,
+					'sizes'   => '(min-width: 1024px) 400px, (min-width: 640px) 46vw, 92vw',
 				)
 			);
 			++$dailypulse_index;

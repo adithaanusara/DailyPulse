@@ -17,7 +17,7 @@ if ( 'none' === $dailypulse_ticker['mode'] || ! $dailypulse_ticker['items'] ) {
 $dailypulse_many = count( $dailypulse_ticker['items'] ) > 1;
 ?>
 <aside class="ticker ticker--<?php echo esc_attr( $dailypulse_ticker['mode'] ); ?>" data-ticker data-interval="<?php echo esc_attr( (string) dailypulse_option( 'ticker_speed' ) ); ?>" aria-label="<?php echo esc_attr( $dailypulse_ticker['label'] ); ?>">
-	<div class="container ticker__inner">
+	<div class="ticker__inner">
 		<p class="ticker__label">
 			<span class="ticker__dot" aria-hidden="true"></span>
 			<?php echo esc_html( $dailypulse_ticker['label'] ); ?>

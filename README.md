@@ -2,7 +2,7 @@
 
 A fast, modern WordPress news portal: a custom theme plus two small plugins.
 
-- **Theme `dailypulse`** — breaking-news ticker, hero slider, filterable "Latest" grid, colour-coded category sections, article page with gallery and source links, dark/light mode, self-hosted variable fonts (with Sinhala and Tamil). One stylesheet and one deferred script; no jQuery, no framework, no build step.
+- **Theme `dailypulse`** — newspaper-style layout: top bar with breaking-news ticker, centred masthead, dark menu bar, featured slider with side tiles, filterable "Latest" grid beside a "Just in" sidebar, a colour-coded box per category, article page with gallery and source links, dark/light mode, self-hosted variable fonts (with Sinhala and Tamil). One stylesheet and one deferred script; no jQuery, no framework, no build step.
 - **Plugin `dailypulse-core`** — the newsroom tools: story fields, Breaking Alerts, category colours and layouts, site options, share/SEO metadata, demo content.
 - **Plugin `dailypulse-cleanup`** — once a day, moves published stories older than 3 days to the Trash (or deletes them).
 

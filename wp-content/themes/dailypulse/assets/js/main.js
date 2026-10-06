@@ -45,7 +45,7 @@
 			root.dataset.theme = theme;
 
 			if ( themeColor ) {
-				themeColor.content = theme === 'dark' ? '#0d0e11' : '#faf9f6';
+				themeColor.content = theme === 'dark' ? '#0f1115' : '#ffffff';
 			}
 
 			buttons.forEach( ( button ) => {

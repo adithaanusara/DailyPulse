@@ -1,7 +1,8 @@
 <?php
 /**
- * A homepage section for one category, in one of four layouts:
+ * A homepage section for one category, in one of five layouts:
  *
+ *   box       a bordered box in the main column: top story + headline list
  *   lead      one large story with a list of compact ones beside it
  *   grid      four equal cards
  *   magazine  a feature story with numbered, text-only reads beside it
@@ -20,8 +21,9 @@ if ( empty( $args['term'] ) || ! $args['term'] instanceof WP_Term ) {
 }
 
 $dailypulse_term   = $args['term'];
-$dailypulse_layout = isset( $args['layout'] ) ? $args['layout'] : 'lead';
+$dailypulse_layout = isset( $args['layout'] ) ? $args['layout'] : 'box';
 $dailypulse_counts = array(
+	'box'      => 4,
 	'lead'     => 5,
 	'grid'     => 4,
 	'magazine' => 5,
@@ -29,7 +31,7 @@ $dailypulse_counts = array(
 );
 
 if ( ! isset( $dailypulse_counts[ $dailypulse_layout ] ) ) {
-	$dailypulse_layout = 'lead';
+	$dailypulse_layout = 'box';
 }
 
 $dailypulse_posts = dailypulse_section_posts( $dailypulse_term->term_id, $dailypulse_counts[ $dailypulse_layout ] );
@@ -55,7 +57,7 @@ if ( 'band' === $dailypulse_layout ) {
 }
 ?>
 <section
-	class="section section--<?php echo esc_attr( $dailypulse_layout ); ?><?php echo 'band' === $dailypulse_layout ? ' band' : ' container'; ?>"
+	class="section section--<?php echo esc_attr( $dailypulse_layout ); ?><?php echo 'band' === $dailypulse_layout ? ' band' : ( 'box' === $dailypulse_layout ? ' box' : ' container' ); ?>"
 	aria-labelledby="<?php echo esc_attr( $dailypulse_id ); ?>"
 	<?php echo dailypulse_cat_style( $dailypulse_term ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helper. ?>
 	<?php echo 'band' === $dailypulse_layout ? 'data-scroller' : ''; ?>
@@ -66,7 +68,33 @@ if ( 'band' === $dailypulse_layout ) {
 
 	<?php dailypulse_section_head( $dailypulse_term->name, $dailypulse_head ); ?>
 
-	<?php if ( 'lead' === $dailypulse_layout || 'magazine' === $dailypulse_layout ) : ?>
+	<?php if ( 'box' === $dailypulse_layout ) : ?>
+
+		<?php
+		$post = $dailypulse_posts[0]; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- restored below.
+		setup_postdata( $post );
+		dailypulse_card(
+			array(
+				'excerpt' => true,
+				'sizes'   => '(min-width: 1024px) 400px, (min-width: 700px) 46vw, 92vw',
+			)
+		);
+		?>
+		<div class="box__list">
+			<?php
+			foreach ( array_slice( $dailypulse_posts, 1 ) as $dailypulse_index => $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- restored below.
+				setup_postdata( $post );
+				dailypulse_card(
+					array(
+						'variant' => 'row',
+						'index'   => $dailypulse_index + 1,
+					)
+				);
+			}
+			?>
+		</div>
+
+	<?php elseif ( 'lead' === $dailypulse_layout || 'magazine' === $dailypulse_layout ) : ?>
 
 		<div class="split split--<?php echo esc_attr( $dailypulse_layout ); ?>">
 			<div class="split__main">

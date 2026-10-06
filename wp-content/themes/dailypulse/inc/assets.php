@@ -82,12 +82,12 @@ function dailypulse_head_boot() {
 	$scheme = dailypulse_option( 'color_scheme' );
 
 	echo '<meta name="color-scheme" content="light dark">' . "\n";
-	echo '<meta name="theme-color" content="#faf9f6">' . "\n";
+	echo '<meta name="theme-color" content="#ffffff">' . "\n";
 
 	$script = '(function(d,s){var t,m;try{t=localStorage.getItem("dailypulse-theme")}catch(e){}'
 		. 'if(t!=="light"&&t!=="dark"){t=s==="auto"?(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):s}'
 		. 'd.setAttribute("data-theme",t);d.className=d.className.replace("no-js","js");'
-		. 'm=document.querySelector(\'meta[name="theme-color"]\');if(m){m.content=t==="dark"?"#0d0e11":"#faf9f6"}'
+		. 'm=document.querySelector(\'meta[name="theme-color"]\');if(m){m.content=t==="dark"?"#0f1115":"#ffffff"}'
 		. '})(document.documentElement,' . wp_json_encode( $scheme ) . ');';
 
 	wp_print_inline_script_tag( $script );
@@ -104,7 +104,7 @@ function dailypulse_assets() {
 
 	$accent = sanitize_hex_color( (string) dailypulse_option( 'accent_color' ) );
 
-	if ( $accent && '#e5352b' !== strtolower( $accent ) ) {
+	if ( $accent && '#0b6fe0' !== strtolower( $accent ) ) {
 		wp_add_inline_style( 'dailypulse', sprintf( ':root{--brand:%1$s;--on-brand:%2$s}', $accent, dailypulse_readable_on( $accent ) ) );
 	}
 
@@ -182,7 +182,7 @@ function dailypulse_preload_fonts( $resources ) {
 	} elseif ( 'ta' === $language ) {
 		$fonts = array( 'noto-sans-tamil-tamil-wght-normal.woff2', 'noto-serif-tamil-tamil-wght-normal.woff2' );
 	} else {
-		$fonts = array( 'inter-latin-wght-normal.woff2', 'fraunces-latin-opsz-normal.woff2' );
+		$fonts = array( 'inter-latin-wght-normal.woff2' );
 	}
 
 	foreach ( $fonts as $font ) {

@@ -21,7 +21,7 @@ if ( ! function_exists( 'dailypulse_option' ) ) {
 	 */
 	function dailypulse_option( $key, $fallback = null ) {
 		$defaults = array(
-			'accent_color'          => '#e5352b',
+			'accent_color'          => '#0b6fe0',
 			'color_scheme'          => 'auto',
 			'relative_dates'        => true,
 			'ticker_enabled'        => true,
@@ -34,7 +34,7 @@ if ( ! function_exists( 'dailypulse_option' ) ) {
 			'hero_count'            => 5,
 			'hero_autoplay'         => true,
 			'hero_interval'         => 7,
-			'feed_count'            => 9,
+			'feed_count'            => 8,
 			'show_reading_time'     => true,
 			'show_share'            => true,
 			'show_progress'         => true,

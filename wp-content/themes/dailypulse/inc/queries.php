@@ -202,3 +202,21 @@ function dailypulse_related_posts( $post_id, $count ) {
 		)
 	);
 }
+
+/**
+ * Stories for the homepage sidebar's "Just in" list: simply the newest headlines.
+ *
+ * @param int $count Number of stories.
+ * @return WP_Post[]
+ */
+function dailypulse_sidebar_posts( $count = 6 ) {
+	return get_posts(
+		array(
+			'post_type'           => 'post',
+			'post_status'         => 'publish',
+			'posts_per_page'      => $count,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+}

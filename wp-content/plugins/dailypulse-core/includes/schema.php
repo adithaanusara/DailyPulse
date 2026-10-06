@@ -162,8 +162,8 @@ function dailypulse_option_sections() {
 				'accent_color'   => array(
 					'label'        => __( 'Accent colour', 'dailypulse-core' ),
 					'type'         => 'color',
-					'default'      => '#e5352b',
-					'instructions' => __( 'Used for the breaking label, links and buttons. Category colours are set on each category.', 'dailypulse-core' ),
+					'default'      => '#0b6fe0',
+					'instructions' => __( 'Used for the menu highlight, links and buttons. Category colours are set on each category.', 'dailypulse-core' ),
 				),
 				'color_scheme'   => array(
 					'label'        => __( 'Default appearance', 'dailypulse-core' ),
@@ -266,7 +266,7 @@ function dailypulse_option_sections() {
 				'feed_count'    => array(
 					'label'        => __( 'Stories per page in “Latest”', 'dailypulse-core' ),
 					'type'         => 'number',
-					'default'      => 9,
+					'default'      => 8,
 					'min'          => 3,
 					'max'          => 24,
 					'instructions' => __( 'Category sections further down the homepage are configured on each category (Posts → Categories).', 'dailypulse-core' ),
@@ -411,11 +411,11 @@ function dailypulse_category_fields() {
 			'type'         => 'select',
 			'default'      => 'auto',
 			'choices'      => array(
-				'auto'     => __( 'Automatic (alternates)', 'dailypulse-core' ),
-				'lead'     => __( 'Lead story + headline list', 'dailypulse-core' ),
-				'grid'     => __( 'Four-card grid', 'dailypulse-core' ),
-				'magazine' => __( 'Magazine: feature + numbered reads', 'dailypulse-core' ),
-				'band'     => __( 'Dark band with a sideways scroller', 'dailypulse-core' ),
+				'auto'     => __( 'Box beside the sidebar (default)', 'dailypulse-core' ),
+				'lead'     => __( 'Full width: lead story + headline list', 'dailypulse-core' ),
+				'grid'     => __( 'Full width: four-card grid', 'dailypulse-core' ),
+				'magazine' => __( 'Full width: feature + numbered reads', 'dailypulse-core' ),
+				'band'     => __( 'Full width: dark band with a sideways scroller', 'dailypulse-core' ),
 			),
 			'instructions' => __( 'How this category’s section looks on the homepage.', 'dailypulse-core' ),
 		),
